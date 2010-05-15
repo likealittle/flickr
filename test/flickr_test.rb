@@ -10,28 +10,18 @@ class TestFlickr < Test::Unit::TestCase
   # instantiation tests
   def test_should_instantiate_new_flickr_client
     Flickr.any_instance.stubs(:login)
-    flickr = Flickr.new('some_api_key', 'email@test.com', 'some_password', 'some_shared_secret')
+    flickr = Flickr.new(:api_key => 'some_api_key',  :shared_secret => 'some_shared_secret')
     
     assert_equal 'some_api_key', flickr.api_key
     assert_equal 'some_shared_secret', flickr.instance_variable_get(:@shared_secret)
   end
   
-  def test_should_try_to_login_using_old_api_if_email_and_password_passed
-    Flickr.any_instance.expects(:login).with('email@test.com', 'some_password') # checks email and password have been set
-    flickr = Flickr.new('some_api_key', 'email@test.com', 'some_password', 'some_shared_secret')
-  end
-  
   def test_should_instantiate_new_flickr_client_on_new_api
-    flickr = Flickr.new('api_key' => 'some_api_key', 'email' => 'email@test.com', 'password' => 'some_password', 'shared_secret' => 'some_shared_secret', 'foo' => 'bar')
+    flickr = Flickr.new(:api_key => 'some_api_key', :shared_secret => 'some_shared_secret', 'foo' => 'bar')
     
     assert_equal 'some_api_key', flickr.api_key
     assert_equal 'some_shared_secret', flickr.instance_variable_get(:@shared_secret)
     assert_nil flickr.instance_variable_get(:@foo) # should ignore other params
-  end
-  
-  def test_should_not_try_to_login_using_old_api_when_instantiate_new_flickr_client_on_new_api
-    Flickr.any_instance.expects(:login).never # doesn't bother trying to login with new api -- it'll fail in any case
-    flickr = Flickr.new('api_key' => 'some_api_key', 'email' => 'email@test.com', 'password' => 'some_password', 'shared_secret' => 'some_shared_secret', 'foo' => 'bar')
   end
   
   # signature_from method tests
@@ -951,7 +941,7 @@ class TestFlickr < Test::Unit::TestCase
   end
   
   def authenticated_flickr_client
-    f = Flickr.new('api_key' => 'some_api_key', 'shared_secret' => 'shared_secret_code')
+    f = Flickr.new(:api_key => 'some_api_key', :shared_secret => 'shared_secret_code')
     f.instance_variable_set(:@auth_token, 'some_auth_token')
     f
   end

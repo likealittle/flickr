@@ -72,20 +72,43 @@ class Flickr
   # private photos)
   # There are two ways to initialize the Flickr client. The preferred way is with
   # a hash of params, e.g. 'api_key' => 'your_api_key', 'shared_secret' => 
-  # 'shared_secret_code'. The older (deprecated) way is to pass an ordered series of 
-  # arguments. This is provided for continuity only, as several of the arguments
-  # are no longer usable ('email', 'password')
-  def initialize(api_key_or_params=nil, email=nil, password=nil, shared_secret=nil)
+  # 'shared_secret_code'. Other way is to use in Rails an config file 
+  # RAILS_ROOT/config/flickr.api.yml and there use params as key/values even 
+  # specified for every environment.
+  def initialize(api_key_or_params={})
     @host = HOST_URL
     @api = API_PATH
-    if api_key_or_params.is_a?(Hash)
-      @api_key = api_key_or_params['api_key']
-      @shared_secret = api_key_or_params['shared_secret']
-      @auth_token = api_key_or_params['auth_token']
-    else
-      @api_key = api_key_or_params
-      @shared_secret = shared_secret
-      login(email, password) if email and password
+    api_key_or_params = {:api_key => api_key_or_params} if api_key_or_params.is_a?(String)
+    api_key_or_params = Config.get if Config.parsed? and not api_key_or_params.empty?
+    set_up_configuration api_key_or_params if api_key_or_params.is_a? Hash
+  end                                     
+  
+  def set_up_configuration api_key_or_params = {}
+    @api_key = api_key_or_params[:api_key]
+    @shared_secret = api_key_or_params[:shared_secret]
+    @auth_token = api_key_or_params[:auth_token]
+    @shared_secret = api_key_or_params[:shared_secret]
+  end
+  
+  class Config
+    @@configuration = nil
+    
+    def self.load_from_file file
+      return false unless File.exist?(config_file)
+      @@configuration = YAML.load(ERB.new(File.read(config_file)).result)
+      parse_in_rails_env!
+    end                                                                  
+    
+    def self.parse_in_rails_env!
+      @@configuration = @@configuration[RAILS_ENV] if defined? RAILS_ENV
+    end 
+    
+    def self.get
+      @@configuration
+    end
+    
+    def self.parsed?
+      not @@configuration.nil?
     end
   end
 
@@ -100,17 +123,7 @@ class Flickr
                       'name' => auth_response['user']['fullname'],
                       'client' => self)
     @auth_token
-  end
-  
-  # Stores authentication credentials to use on all subsequent calls.
-  # If authentication succeeds, returns a User object.
-  # NB This call is no longer in API and will result in an error if called
-  def login(email='', password='')
-    @email = email
-    @password = password
-    user = request('test.login')['user'] rescue fail
-    @user = User.new(user['id'], nil, nil, nil, @api_key)
-  end
+  end  
   
   # Implements flickr.urls.lookupGroup and flickr.urls.lookupUser
   def find_by_url(url)
@@ -280,8 +293,7 @@ class Flickr
         @password = password
         @api_key = api_key
       end
-      @client ||= Flickr.new('api_key' => @api_key, 'shared_secret' => @shared_secret, 'auth_token' => @auth_token) if @api_key
-      @client.login(@email, @password) if @email and @password # this is now irrelevant as Flickr API no longer supports authentication this way
+      @client ||= Flickr.new(:api_key => @api_key, :shared_secret => @shared_secret, :auth_token => @auth_token) if @api_key
     end
 
     def username
