@@ -89,28 +89,6 @@ class Flickr
     @auth_token = api_key_or_params[:auth_token]
     @shared_secret = api_key_or_params[:shared_secret]
   end
-  
-  class Config
-    @@configuration = nil
-    
-    def self.load_from_file file
-      return false unless File.exist?(config_file)
-      @@configuration = YAML.load(ERB.new(File.read(config_file)).result)
-      parse_in_rails_env!
-    end                                                                  
-    
-    def self.parse_in_rails_env!
-      @@configuration = @@configuration[RAILS_ENV] if defined? RAILS_ENV
-    end 
-    
-    def self.get
-      @@configuration
-    end
-    
-    def self.parsed?
-      not @@configuration.nil?
-    end
-  end
 
   # Gets authentication token given a Flickr frob, which is returned when user
   # allows access to their account for the application with the api_key which
@@ -250,6 +228,39 @@ class Flickr
       collection = photos['photo'] || []
       collection = [collection] if collection.is_a? Hash
       collection.each { |photo| self << Photo.new(photo.delete('id'), api_key, photo) }
+    end
+  end       
+         
+  # This class supports external configuration
+  class Config                                
+    
+    # Contains whole configuration for flickr API
+    @@configuration = {} 
+               
+    # Is true if configuration has been parsed
+    @@parsed = false
+                                              
+    # parses file and prepare @@configuration for access from outside to fetch configuration hash
+    def self.load_from_file file
+      return false unless File.exist?(config_file)
+      @@configuration = YAML.load(ERB.new(File.read(config_file)).result)
+      @@parsed = true
+      parse_in_rails_env!
+    end                                                                  
+              
+    # Excludes specific configuration for choosed environment in Rails
+    def self.parse_in_rails_env!
+      @@configuration = @@configuration[RAILS_ENV] if defined? RAILS_ENV
+    end 
+                                                                      
+    # Returns configuration Hash
+    def self.get
+      @@configuration
+    end
+                                
+    # Returns true if configuration has been parsed
+    def self.parsed?
+      @@parsed
     end
   end
   
