@@ -133,7 +133,7 @@ class Flickr
 
   # Implements flickr.photos.getRecent and flickr.photos.search
   def photos(*criteria)
-    criteria ? photos_search(*criteria) : recent
+    not criteria.empty? and photos_search(*criteria) or recent
   end
 
   # flickr.photos.getRecent
