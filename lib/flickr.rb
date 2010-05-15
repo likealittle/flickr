@@ -242,8 +242,8 @@ class Flickr
                                               
     # parses file and prepare @@configuration for access from outside to fetch configuration hash
     def self.load_from_file file
-      return false unless File.exist?(config_file)
-      @@configuration = YAML.load(ERB.new(File.read(config_file)).result)
+      return false unless File.exist?(file)
+      @@configuration = YAML.load(ERB.new(File.read(file)).result)
       @@parsed = true
       parse_in_rails_env!
     end                                                                  
