@@ -1,10 +1,10 @@
 = flickr
 
-http://github.com/ctagg/flickr
+http://github.com/RaVbaker/flickr
 
 == DESCRIPTION:
 
-An insanely easy interface to the Flickr photo-sharing service. By Scott Raymond. (& updated May 08 by Chris Taggart, http://pushrod.wordpress.com)
+An insanely easy interface to the Flickr photo-sharing service. By Scott Raymond. (& updated May 2008 by Chris Taggart, http://pushrod.wordpress.com & updated May 2010 by Rafal Piekarski)
 
 == FEATURES/PROBLEMS:
 
@@ -13,32 +13,32 @@ This has now been largely corrected, though not all current API calls are suppor
 
 == SYNOPSIS:
 
-require 'flickr'
-flickr = Flickr.new('some_flickr_api_key')    # create a flickr client (get an API key from http://www.flickr.com/services/api/)
-user = flickr.users('sco@scottraymond.net')   # lookup a user
-user.name                                     # get the user's name
-user.location                                 # and location
-user.photos                                   # grab their collection of Photo objects...
-user.groups                                   # ...the groups they're in...
-user.contacts                                 # ...their contacts...
-user.favorites                                # ...favorite photos...
-user.photosets                                # ...their photo sets...
-user.tags                                     # ...their tags...
-user.popular_tags							  							# ...and their popular tags
-recentphotos = flickr.photos                  # get the 100 most recent public photos
-photo = recentphotos.first                    # or very most recent one
-photo.url                                     # see its URL,
-photo.title                                   # title,
-photo.description                             # and description,
-photo.owner                                   # and its owner.
-File.open(photo.filename, 'w') do |file|
-  file.puts p.file                            # save the photo to a local file
-end
-flickr.photos.each do |p|                     # get the last 100 public photos...
-  File.open(p.filename, 'w') do |f|
-    f.puts p.file('Square')                   # ...and save a local copy of their square thumbnail
+  require 'flickr'
+  flickr = Flickr.new('some_flickr_api_key')    # create a flickr client (get an API key from http://api.flickr.com/services/api/)
+  user = flickr.users('sco@scottraymond.net')   # lookup a user
+  user.name                                     # get the user's name
+  user.location                                 # and location
+  user.photos                                   # grab their collection of Photo objects...
+  user.groups                                   # ...the groups they're in...
+  user.contacts                                 # ...their contacts...
+  user.favorites                                # ...favorite photos...
+  user.photosets                                # ...their photo sets...
+  user.tags                                     # ...their tags...
+  user.popular_tags							  							# ...and their popular tags
+  recentphotos = flickr.photos                  # get the 100 most recent public photos
+  photo = recentphotos.first                    # or very most recent one
+  photo.url                                     # see its URL,
+  photo.title                                   # title,
+  photo.description                             # and description,
+  photo.owner                                   # and its owner.
+  File.open(photo.filename, 'w') do |file|
+    file.puts p.file                            # save the photo to a local file
   end
-end
+  flickr.photos.each do |p|                     # get the last 100 public photos...
+    File.open(p.filename, 'w') do |f|
+      f.puts p.file('Square')                   # ...and save a local copy of their square thumbnail
+    end
+  end                              
 
 == REQUIREMENTS:
 
@@ -46,13 +46,13 @@ end
 
 == INSTALL:
 
-* sudo gem install flickr
+  sudo gem install flickr
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2008 Scott Raymond, Patrick Plattes, Chris Taggart
+Copyright (c) 2005-2010 Scott Raymond, Patrick Plattes, Chris Taggart, Rafal Piekarski
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
