@@ -7,7 +7,7 @@
 #
 # BASIC USAGE:
 #  require 'flickr'
-#  flickr = Flickr.new('some_flickr_api_key')    # create a flickr client (get an API key from http://www.flickr.com/services/api/)
+#  flickr = Flickr.new('some_flickr_api_key')    # create a flickr client (get an API key from http://api.flickr.com/services/api/)
 #  user = flickr.users('sco@scottraymond.net')   # lookup a user
 #  user.name                                     # get the user's name
 #  user.location                                 # and location
@@ -78,6 +78,7 @@ class Flickr
   def initialize(api_key_or_params={})
     @host = HOST_URL
     @api = API_PATH
+    api_key_or_params={} if api_key_or_params.nil? # fix for nil value as argument
     api_key_or_params = {:api_key => api_key_or_params} if api_key_or_params.is_a?(String)
     api_key_or_params = Config.get if Config.parsed? and api_key_or_params.empty?
     set_up_configuration api_key_or_params if api_key_or_params.is_a? Hash
@@ -222,7 +223,7 @@ class Flickr
     # the first (and only) key-value pair of the response. The key will vary 
     # depending on the original object the photos are related to (e.g 'photos',
     # 'photoset', etc)
-    def initialize(photos_api_response={}, api_key=nil)
+    def initialize(photos_api_response={}, api_key={})
       photos = photos_api_response.values.first 
       [ "page", "pages", "perpage", "total" ].each { |i| instance_variable_set("@#{i}", photos[i])} 
       collection = photos['photo'] || []
@@ -294,7 +295,7 @@ class Flickr
     # (e.g. 'client' => some_existing_flickr_client_object), and this is
     # what happends when users are initlialized as the result of a method 
     # called on the flickr client (e.g. flickr.users)
-    def initialize(id_or_params_hash=nil, username=nil, email=nil, password=nil, api_key=nil)
+    def initialize(id_or_params_hash=nil, username=nil, email=nil, password=nil, api_key={})
       if id_or_params_hash.is_a?(Hash)
         id_or_params_hash.each { |k,v| self.instance_variable_set("@#{k}", v) } # convert extra_params into instance variables
       else
@@ -420,7 +421,7 @@ class Flickr
 
     attr_reader :id, :client, :title
 
-    def initialize(id=nil, api_key=nil, extra_params={})
+    def initialize(id=nil, api_key={}, extra_params={})
       @id = id
       @api_key = api_key
       extra_params.each { |k,v| self.instance_variable_set("@#{k}", v) } # convert extra_params into instance variables
@@ -669,7 +670,7 @@ class Flickr
   class Group
     attr_reader :id, :client, :description, :name, :eighteenplus, :members, :online, :privacy, :url#, :chatid, :chatcount
     
-    def initialize(id_or_params_hash=nil, api_key=nil)
+    def initialize(id_or_params_hash=nil, api_key={})
       if id_or_params_hash.is_a?(Hash)
         id_or_params_hash.each { |k,v| self.instance_variable_set("@#{k}", v) } # convert extra_params into instance variables
       else
@@ -706,7 +707,7 @@ class Flickr
 
     attr_reader :id, :client, :owner, :primary, :photos, :title, :description, :url
 
-    def initialize(id=nil, api_key=nil)
+    def initialize(id=nil, api_key={})
       @id = id
       @api_key = api_key
       @client = Flickr.new @api_key
