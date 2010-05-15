@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Sat May 15 23:56:49 +0200 2010</td>
+      <td>Sat May 15 23:59:22 +0200 2010</td>
     </tr>
     </table>
   </div>
@@ -71,14 +71,15 @@
     <div id="description">
       <h1>flickr</h1>
 <p>
-<a href="http://github.com/ctagg/flickr">github.com/ctagg/flickr</a>
+<a href="http://github.com/RaVbaker/flickr">github.com/RaVbaker/flickr</a>
 </p>
 <h2>DESCRIPTION:</h2>
 <p>
 An insanely easy interface to the <a
 href="../classes/Flickr.html">Flickr</a> photo-sharing service. By Scott
-Raymond. (&amp; updated May 08 by Chris Taggart, <a
-href="http://pushrod.wordpress.com">pushrod.wordpress.com</a>)
+Raymond. (&amp; updated May 2008 by Chris Taggart, <a
+href="http://pushrod.wordpress.com">pushrod.wordpress.com</a> &amp; updated
+May 2010 by Rafal Piekarski)
 </p>
 <h2>FEATURES/PROBLEMS:</h2>
 <p>
@@ -90,7 +91,7 @@ current API calls are supported yet.
 <h2>SYNOPSIS:</h2>
 <pre>
   require 'flickr'
-  flickr = Flickr.new('some_flickr_api_key')    # create a flickr client (get an API key from http://www.flickr.com/services/api/)
+  flickr = Flickr.new('some_flickr_api_key')    # create a flickr client (get an API key from http://api.flickr.com/services/api/)
   user = flickr.users('sco@scottraymond.net')   # lookup a user
   user.name                                     # get the user's name
   user.location                                 # and location
@@ -123,17 +124,16 @@ current API calls are supported yet.
 </li>
 </ul>
 <h2>INSTALL:</h2>
-<ul>
-<li>sudo gem install flickr
-
-</li>
-</ul>
+<pre>
+  sudo gem install flickr
+</pre>
 <h2>LICENSE:</h2>
 <p>
 (The MIT License)
 </p>
 <p>
-Copyright (c) 2008 Scott Raymond, Patrick Plattes, Chris Taggart
+Copyright (c) 2005-2010 Scott Raymond, Patrick Plattes, Chris Taggart,
+Rafal Piekarski
 </p>
 <p>
 Permission is hereby granted, free of charge, to any person obtaining a

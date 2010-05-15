@@ -95,7 +95,7 @@ href="../Flickr.html">Flickr</a> and make it accessible in a friendly way
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000047">new</a>&nbsp;&nbsp;
+      <a href="#M000051">new</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -145,12 +145,12 @@ href="../Flickr.html">Flickr</a> and make it accessible in a friendly way
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000047" class="method-detail">
-        <a name="M000047"></a>
+      <div id="method-M000051" class="method-detail">
+        <a name="M000051"></a>
 
         <div class="method-heading">
-          <a href="#M000047" class="method-signature">
-          <span class="method-name">new</span><span class="method-args">(photos_api_response={}, api_key=nil)</span>
+          <a href="#M000051" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(photos_api_response={}, api_key={})</span>
           </a>
         </div>
       
@@ -163,17 +163,17 @@ the response. The key will vary depending on the original object the photos
 are related to (e.g &#8216;photos&#8217;, &#8216;photoset&#8217;, etc)
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000047-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000047-source">
+            onclick="toggleCode('M000051-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000051-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 234</span>
-234:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">photos_api_response</span>={}, <span class="ruby-identifier">api_key</span>=<span class="ruby-keyword kw">nil</span>)
-235:       <span class="ruby-identifier">photos</span> = <span class="ruby-identifier">photos_api_response</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> 
-236:       [ <span class="ruby-value str">&quot;page&quot;</span>, <span class="ruby-value str">&quot;pages&quot;</span>, <span class="ruby-value str">&quot;perpage&quot;</span>, <span class="ruby-value str">&quot;total&quot;</span> ].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{i}&quot;</span>, <span class="ruby-identifier">photos</span>[<span class="ruby-identifier">i</span>])} 
-237:       <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">photos</span>[<span class="ruby-value str">'photo'</span>] <span class="ruby-operator">||</span> []
-238:       <span class="ruby-identifier">collection</span> = [<span class="ruby-identifier">collection</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
-239:       <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">photo</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Photo</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">photo</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'id'</span>), <span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">photo</span>) }
-240:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 226</span>
+226:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">photos_api_response</span>={}, <span class="ruby-identifier">api_key</span>={})
+227:       <span class="ruby-identifier">photos</span> = <span class="ruby-identifier">photos_api_response</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">first</span> 
+228:       [ <span class="ruby-value str">&quot;page&quot;</span>, <span class="ruby-value str">&quot;pages&quot;</span>, <span class="ruby-value str">&quot;perpage&quot;</span>, <span class="ruby-value str">&quot;total&quot;</span> ].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{i}&quot;</span>, <span class="ruby-identifier">photos</span>[<span class="ruby-identifier">i</span>])} 
+229:       <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">photos</span>[<span class="ruby-value str">'photo'</span>] <span class="ruby-operator">||</span> []
+230:       <span class="ruby-identifier">collection</span> = [<span class="ruby-identifier">collection</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+231:       <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">photo</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Photo</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">photo</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'id'</span>), <span class="ruby-identifier">api_key</span>, <span class="ruby-identifier">photo</span>) }
+232:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

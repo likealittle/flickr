@@ -82,8 +82,8 @@
       <p>
 Todo: flickr.photosets.delete flickr.photosets.editMeta
 flickr.photosets.editPhotos flickr.photosets.getContext flickr.photosets.<a
-href="Photoset.html#M000045">getInfo</a> flickr.photosets.<a
-href="Photoset.html#M000046">getPhotos</a>
+href="Photoset.html#M000049">getInfo</a> flickr.photosets.<a
+href="Photoset.html#M000050">getPhotos</a>
 </p>
 
     </div>
@@ -95,9 +95,9 @@ href="Photoset.html#M000046">getPhotos</a>
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000045">getInfo</a>&nbsp;&nbsp;
-      <a href="#M000046">getPhotos</a>&nbsp;&nbsp;
-      <a href="#M000044">new</a>&nbsp;&nbsp;
+      <a href="#M000049">getInfo</a>&nbsp;&nbsp;
+      <a href="#M000050">getPhotos</a>&nbsp;&nbsp;
+      <a href="#M000048">new</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -167,26 +167,26 @@ href="Photoset.html#M000046">getPhotos</a>
     <div id="methods">
       <h3 class="section-bar">Public Class methods</h3>
 
-      <div id="method-M000044" class="method-detail">
-        <a name="M000044"></a>
+      <div id="method-M000048" class="method-detail">
+        <a name="M000048"></a>
 
         <div class="method-heading">
-          <a href="#M000044" class="method-signature">
-          <span class="method-name">new</span><span class="method-args">(id=nil, api_key=nil)</span>
+          <a href="#M000048" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(id=nil, api_key={})</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000044-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000044-source">
+            onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000048-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 686</span>
-686:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">api_key</span>=<span class="ruby-keyword kw">nil</span>)
-687:       <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
-688:       <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key</span>
-689:       <span class="ruby-ivar">@client</span> = <span class="ruby-constant">Flickr</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@api_key</span>
-690:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 710</span>
+710:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">api_key</span>={})
+711:       <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
+712:       <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key</span>
+713:       <span class="ruby-ivar">@client</span> = <span class="ruby-constant">Flickr</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@api_key</span>
+714:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -194,58 +194,58 @@ href="Photoset.html#M000046">getPhotos</a>
 
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000045" class="method-detail">
-        <a name="M000045"></a>
+      <div id="method-M000049" class="method-detail">
+        <a name="M000049"></a>
 
         <div class="method-heading">
-          <a href="#M000045" class="method-signature">
+          <a href="#M000049" class="method-signature">
           <span class="method-name">getInfo</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p>
-Implements flickr.photosets.<a href="Photoset.html#M000045">getInfo</a>
+Implements flickr.photosets.<a href="Photoset.html#M000049">getInfo</a>
 private, once we can call it as needed
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000045-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000045-source">
+            onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000049-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 694</span>
-694:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getInfo</span>
-695:       <span class="ruby-identifier">info</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photosets_getInfo</span>(<span class="ruby-value str">'photoset_id'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-ivar">@id</span>)[<span class="ruby-value str">'photoset'</span>]
-696:       <span class="ruby-ivar">@owner</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info</span>[<span class="ruby-value str">'owner'</span>], <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-ivar">@api_key</span>)
-697:       <span class="ruby-ivar">@primary</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'primary'</span>]
-698:       <span class="ruby-ivar">@photos</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'photos'</span>]
-699:       <span class="ruby-ivar">@title</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'title'</span>]
-700:       <span class="ruby-ivar">@description</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'description'</span>]
-701:       <span class="ruby-ivar">@url</span> = <span class="ruby-node">&quot;http://www.flickr.com/photos/#{@owner.getInfo.username}/sets/#{@id}/&quot;</span>
-702:       <span class="ruby-keyword kw">self</span>
-703:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 718</span>
+718:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getInfo</span>
+719:       <span class="ruby-identifier">info</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photosets_getInfo</span>(<span class="ruby-value str">'photoset_id'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-ivar">@id</span>)[<span class="ruby-value str">'photoset'</span>]
+720:       <span class="ruby-ivar">@owner</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info</span>[<span class="ruby-value str">'owner'</span>], <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-ivar">@api_key</span>)
+721:       <span class="ruby-ivar">@primary</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'primary'</span>]
+722:       <span class="ruby-ivar">@photos</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'photos'</span>]
+723:       <span class="ruby-ivar">@title</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'title'</span>]
+724:       <span class="ruby-ivar">@description</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'description'</span>]
+725:       <span class="ruby-ivar">@url</span> = <span class="ruby-node">&quot;http://www.flickr.com/photos/#{@owner.getInfo.username}/sets/#{@id}/&quot;</span>
+726:       <span class="ruby-keyword kw">self</span>
+727:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000046" class="method-detail">
-        <a name="M000046"></a>
+      <div id="method-M000050" class="method-detail">
+        <a name="M000050"></a>
 
         <div class="method-heading">
-          <a href="#M000046" class="method-signature">
+          <a href="#M000050" class="method-signature">
           <span class="method-name">getPhotos</span><span class="method-args">()</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000046-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000046-source">
+            onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000050-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 705</span>
-705:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getPhotos</span>
-706:       <span class="ruby-identifier">photosetPhotos</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photosets.getPhotos'</span>, {<span class="ruby-value str">'photoset_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@id</span>})
-707:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 729</span>
+729:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getPhotos</span>
+730:       <span class="ruby-identifier">photosetPhotos</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photosets.getPhotos'</span>, {<span class="ruby-value str">'photoset_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@id</span>})
+731:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
