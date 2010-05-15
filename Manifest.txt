@@ -1,11 +1,10 @@
 History.txt
+index.html
+init.rb
+lib/flickr.rb
 LICENSE
 Manifest.txt
-README.txt
 Rakefile
+README.txt          
+test/flickr_test.rb
 TODO
-lib/flickr.rb
-script/destroy
-script/generate
-setup.rb
-test/test_flickr.rb
