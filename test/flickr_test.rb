@@ -73,10 +73,10 @@ class TestFlickr < Test::Unit::TestCase
   def test_should_build_url_from_params_when_signature_returns_nil
     flickr = flickr_client
     flickr.stubs(:signature_from)
-    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?api_key=some_api_key&method=flickr.someMethod", flickr.send(:request_url, 'someMethod')
-    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?api_key=some_api_key&method=flickr.someMethod&foo=bar", flickr.send(:request_url, 'someMethod', 'foo' => 'bar', 'foobar' => nil)
-    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?api_key=some_api_key&method=flickr.someMethod&foo=101", flickr.send(:request_url, 'someMethod', 'foo' => 101)
-    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?api_key=some_api_key&method=flickr.someMethod&foo=value+which%2Fneeds%26escaping", flickr.send(:request_url, 'someMethod', 'foo' => 'value which/needs&escaping')
+    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?method=flickr.someMethod&api_key=some_api_key", flickr.send(:request_url, 'someMethod')
+    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?method=flickr.someMethod&api_key=some_api_key&foo=bar", flickr.send(:request_url, 'someMethod', 'foo' => 'bar', 'foobar' => nil)
+    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?method=flickr.someMethod&api_key=some_api_key&foo=101", flickr.send(:request_url, 'someMethod', 'foo' => 101)
+    assert_equal "#{Flickr::HOST_URL}#{Flickr::API_PATH}/?method=flickr.someMethod&api_key=some_api_key&foo=value+which%2Fneeds%26escaping", flickr.send(:request_url, 'someMethod', 'foo' => 'value which/needs&escaping')
   end
   
   # method_missing tests

@@ -5,15 +5,23 @@ require 'rake/gempackagetask'
 require 'rubygems'
 
 task :default => :test
+         
+desc 'Test the flickr plugin.'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.libs << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = true
+end
 
-Rake::TestTask.new("test") { |t|
-  t.test_files = FileList['test/test*.rb']
-}
-
-Rake::RDocTask.new { |rdoc|
-  rdoc.rdoc_dir = 'doc'
-  rdoc.rdoc_files.include('flickr.rb')
-}
+desc 'Generate documentation for the flickr plugin.'
+Rake::RDocTask.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'Flickr'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
 
 spec = Gem::Specification.new do |s|
   s.add_dependency('xml-simple', '>= 1.0.7')
