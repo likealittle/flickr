@@ -26,11 +26,11 @@ end
 spec = Gem::Specification.new do |s|
   s.add_dependency('xml-simple', '>= 1.0.7')
   s.name = 'flickr'
-  s.version = "1.0.7"
+  s.version = "1.0.9"
   s.platform = Gem::Platform::RUBY
   s.summary = "An insanely easy interface to the Flickr photo-sharing service. By Scott Raymond. Maintainer: Patrick Plattes, Rafal Piekarski"
   s.requirements << 'Flickr developers API key'
-  s.files = Dir.glob("**/*").delete_if { |item| item.include?("svn") || item[/^pkg/] }
+  s.files = Dir.glob("**/*").delete_if { |item| item.include?(".git") || item[/^pkg/] }
   s.require_path = 'lib'
   s.author = "Scott Raymond, Patrick Plattes, Rafal Piekarski"
   s.email = "ravbaker@gmail.com"
