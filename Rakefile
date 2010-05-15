@@ -4,7 +4,7 @@ require 'rake/rdoctask'
 require 'rake/gempackagetask'
 require 'rubygems'
 
-task :default => [ :gem, :rdoc ]
+task :default => :test
 
 Rake::TestTask.new("test") { |t|
   t.test_files = FileList['test/test*.rb']
@@ -18,16 +18,16 @@ Rake::RDocTask.new { |rdoc|
 spec = Gem::Specification.new do |s|
   s.add_dependency('xml-simple', '>= 1.0.7')
   s.name = 'flickr'
-  s.version = "1.0.6"
+  s.version = "1.0.7"
   s.platform = Gem::Platform::RUBY
-  s.summary = "An insanely easy interface to the Flickr photo-sharing service. By Scott Raymond. Maintainer: Patrick Plattes"
+  s.summary = "An insanely easy interface to the Flickr photo-sharing service. By Scott Raymond. Maintainer: Patrick Plattes, Rafal Piekarski"
   s.requirements << 'Flickr developers API key'
   s.files = Dir.glob("**/*").delete_if { |item| item.include?("svn") || item[/^pkg/] }
   s.require_path = 'lib'
-  s.author = "Scott Raymond, Patrick Plattes"
-  s.email = "patrick@erdbeere.net"
+  s.author = "Scott Raymond, Patrick Plattes, Rafal Piekarski"
+  s.email = "ravbaker@gmail.com"
   s.rubyforge_project = "flickr"
-  s.homepage = "http://flickr.rubyforge.org/"
+  s.homepage = "http://github.com/RaVbaker/flickr/"
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
