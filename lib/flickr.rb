@@ -79,7 +79,7 @@ class Flickr
     @host = HOST_URL
     @api = API_PATH
     api_key_or_params = {:api_key => api_key_or_params} if api_key_or_params.is_a?(String)
-    api_key_or_params = Config.get if Config.parsed? and not api_key_or_params.empty?
+    api_key_or_params = Config.get if Config.parsed? and api_key_or_params.empty?
     set_up_configuration api_key_or_params if api_key_or_params.is_a? Hash
   end                                     
   
