@@ -48,6 +48,22 @@ This has now been largely corrected, though not all current API calls are suppor
 
   sudo gem install flickr
 
+== CONFIGURING:
+
+If you want to use this gem/plugin with Rails you can create configuration file in /config directory with specified api connection settings. For example:
+
+  development:
+    api_key: SomeLongApiKey
+    shared_secret: secret!
+    auth_token: authSecretToken
+  
+  beta:
+    api_key: SomeLongApiKeyBeta
+    shared_secret: secretBeta!
+    auth_token: authSecretTokenBeta
+    
+  
+
 == LICENSE:
 
 (The MIT License)
