@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Sat May 15 23:59:22 +0200 2010</td>
+      <td>Sun May 16 02:06:47 +0200 2010</td>
     </tr>
     </table>
   </div>
@@ -126,6 +126,23 @@ current API calls are supported yet.
 <h2>INSTALL:</h2>
 <pre>
   sudo gem install flickr
+</pre>
+<h2>CONFIGURING:</h2>
+<p>
+If you want to use this gem/plugin with Rails you can create configuration
+file in /config directory with specified api connection settings. For
+example:
+</p>
+<pre>
+  development:
+    api_key: SomeLongApiKey
+    shared_secret: secret!
+    auth_token: authSecretToken
+
+  beta:
+    api_key: SomeLongApiKeyBeta
+    shared_secret: secretBeta!
+    auth_token: authSecretTokenBeta
 </pre>
 <h2>LICENSE:</h2>
 <p>

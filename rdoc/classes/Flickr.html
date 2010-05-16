@@ -269,11 +269,11 @@ Implements flickr.urls.lookupGroup and flickr.urls.lookupUser
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 108</span>
-108:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_by_url</span>(<span class="ruby-identifier">url</span>)
-109:     <span class="ruby-identifier">response</span> = <span class="ruby-identifier">urls_lookupUser</span>(<span class="ruby-value str">'url'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">url</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">urls_lookupGroup</span>(<span class="ruby-value str">'url'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">url</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
-110:     (<span class="ruby-identifier">response</span>[<span class="ruby-value str">'user'</span>]) <span class="ruby-operator">?</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'id'</span>], <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-ivar">@api_key</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>[<span class="ruby-value str">'group'</span>][<span class="ruby-value str">'id'</span>], <span class="ruby-ivar">@api_key</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">nil?</span>
-111:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 107</span>
+107:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_by_url</span>(<span class="ruby-identifier">url</span>)
+108:     <span class="ruby-identifier">response</span> = <span class="ruby-identifier">urls_lookupUser</span>(<span class="ruby-value str">'url'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">url</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">urls_lookupGroup</span>(<span class="ruby-value str">'url'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">url</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
+109:     (<span class="ruby-identifier">response</span>[<span class="ruby-value str">'user'</span>]) <span class="ruby-operator">?</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'id'</span>], <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-ivar">@api_key</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">response</span>[<span class="ruby-value str">'group'</span>][<span class="ruby-value str">'id'</span>], <span class="ruby-ivar">@api_key</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">nil?</span>
+110:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -299,16 +299,16 @@ href="Flickr.html#M000018">request</a>
             onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000003-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 97</span>
- 97:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_token_from</span>(<span class="ruby-identifier">frob</span>)
- 98:     <span class="ruby-identifier">auth_response</span> = <span class="ruby-identifier">request</span>(<span class="ruby-value str">&quot;auth.getToken&quot;</span>, <span class="ruby-identifier">:frob</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">frob</span>)[<span class="ruby-value str">'auth'</span>]
- 99:     <span class="ruby-ivar">@auth_token</span> = <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'token'</span>]
-100:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>( <span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'nsid'</span>], 
-101:                       <span class="ruby-value str">'username'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'username'</span>],
-102:                       <span class="ruby-value str">'name'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'fullname'</span>],
-103:                       <span class="ruby-value str">'client'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>)
-104:     <span class="ruby-ivar">@auth_token</span>
-105:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 96</span>
+ 96:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_token_from</span>(<span class="ruby-identifier">frob</span>)
+ 97:     <span class="ruby-identifier">auth_response</span> = <span class="ruby-identifier">request</span>(<span class="ruby-value str">&quot;auth.getToken&quot;</span>, <span class="ruby-identifier">:frob</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">frob</span>)[<span class="ruby-value str">'auth'</span>]
+ 98:     <span class="ruby-ivar">@auth_token</span> = <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'token'</span>]
+ 99:     <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>( <span class="ruby-value str">'id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'nsid'</span>], 
+100:                       <span class="ruby-value str">'username'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'username'</span>],
+101:                       <span class="ruby-value str">'name'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">auth_response</span>[<span class="ruby-value str">'user'</span>][<span class="ruby-value str">'fullname'</span>],
+102:                       <span class="ruby-value str">'client'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>)
+103:     <span class="ruby-ivar">@auth_token</span>
+104:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -331,16 +331,16 @@ Implements flickr.groups.<a href="Flickr.html#M000008">search</a>
             onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000011-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 141</span>
-141:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">groups</span>(<span class="ruby-identifier">group_name</span>, <span class="ruby-identifier">options</span>={})
-142:     <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">groups_search</span>({<span class="ruby-value str">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_name</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>))[<span class="ruby-value str">'groups'</span>][<span class="ruby-value str">'group'</span>]
-143:     <span class="ruby-identifier">collection</span> = [<span class="ruby-identifier">collection</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
-144:     
-145:     <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">group</span><span class="ruby-operator">|</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>( <span class="ruby-value str">&quot;id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>[<span class="ruby-value str">'nsid'</span>], 
-146:                                             <span class="ruby-value str">&quot;name&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>[<span class="ruby-value str">'name'</span>], 
-147:                                             <span class="ruby-value str">&quot;eighteenplus&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>[<span class="ruby-value str">'eighteenplus'</span>],
-148:                                             <span class="ruby-value str">&quot;client&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>) }
-149:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 140</span>
+140:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">groups</span>(<span class="ruby-identifier">group_name</span>, <span class="ruby-identifier">options</span>={})
+141:     <span class="ruby-identifier">collection</span> = <span class="ruby-identifier">groups_search</span>({<span class="ruby-value str">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group_name</span>}.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>))[<span class="ruby-value str">'groups'</span>][<span class="ruby-value str">'group'</span>]
+142:     <span class="ruby-identifier">collection</span> = [<span class="ruby-identifier">collection</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+143:     
+144:     <span class="ruby-identifier">collection</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">group</span><span class="ruby-operator">|</span> <span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>( <span class="ruby-value str">&quot;id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>[<span class="ruby-value str">'nsid'</span>], 
+145:                                             <span class="ruby-value str">&quot;name&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>[<span class="ruby-value str">'name'</span>], 
+146:                                             <span class="ruby-value str">&quot;eighteenplus&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">group</span>[<span class="ruby-value str">'eighteenplus'</span>],
+147:                                             <span class="ruby-value str">&quot;client&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>) }
+148:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -363,10 +363,10 @@ Does an HTTP GET on a given URL and returns the response body
             onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000017-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 179</span>
-179:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">http_get</span>(<span class="ruby-identifier">url</span>)
-180:     <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get_response</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">url</span>)).<span class="ruby-identifier">body</span>.<span class="ruby-identifier">to_s</span>
-181:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 178</span>
+178:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">http_get</span>(<span class="ruby-identifier">url</span>)
+179:     <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">get_response</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">url</span>)).<span class="ruby-identifier">body</span>.<span class="ruby-identifier">to_s</span>
+180:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -389,10 +389,10 @@ Implements flickr.photos.licenses.getInfo
             onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000014-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 161</span>
-161:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">licenses</span>
-162:     <span class="ruby-identifier">photos_licenses_getInfo</span>[<span class="ruby-value str">'licenses'</span>][<span class="ruby-value str">'license'</span>]
-163:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 160</span>
+160:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">licenses</span>
+161:     <span class="ruby-identifier">photos_licenses_getInfo</span>[<span class="ruby-value str">'licenses'</span>][<span class="ruby-value str">'license'</span>]
+162:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -416,10 +416,10 @@ authenticate app for a user
             onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000015-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 166</span>
-166:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">login_url</span>(<span class="ruby-identifier">perms</span>)
-167:     <span class="ruby-node">&quot;http://flickr.com/services/auth/?api_key=#{@api_key}&amp;perms=#{perms}&amp;api_sig=#{signature_from('api_key'=&gt;@api_key, 'perms' =&gt; perms)}&quot;</span>
-168:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 165</span>
+165:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">login_url</span>(<span class="ruby-identifier">perms</span>)
+166:     <span class="ruby-node">&quot;http://flickr.com/services/auth/?api_key=#{@api_key}&amp;perms=#{perms}&amp;api_sig=#{signature_from('api_key'=&gt;@api_key, 'perms' =&gt; perms)}&quot;</span>
+167:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -445,10 +445,10 @@ will pass the call to the flickr.test.echo method.
             onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000016-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 174</span>
-174:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_id</span>, <span class="ruby-identifier">params</span>={})
-175:     <span class="ruby-identifier">request</span>(<span class="ruby-identifier">method_id</span>.<span class="ruby-identifier">id2name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'.'</span>), <span class="ruby-identifier">params</span>)
-176:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 173</span>
+173:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_id</span>, <span class="ruby-identifier">params</span>={})
+174:     <span class="ruby-identifier">request</span>(<span class="ruby-identifier">method_id</span>.<span class="ruby-identifier">id2name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'.'</span>), <span class="ruby-identifier">params</span>)
+175:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -472,10 +472,10 @@ href="Flickr.html#M000008">search</a>
             onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000005-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 114</span>
-114:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photos</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">criteria</span>)
-115:     <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">criteria</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">photos_search</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">criteria</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">recent</span>
-116:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 113</span>
+113:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photos</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">criteria</span>)
+114:     <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">criteria</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">photos_search</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">criteria</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">recent</span>
+115:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -500,11 +500,11 @@ href="Flickr/Photo.html">Photo</a> objects)
             onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000019-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 192</span>
-192:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photos_request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>={})
-193:     <span class="ruby-identifier">photos</span> = <span class="ruby-identifier">request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>)
-194:     <span class="ruby-constant">PhotoCollection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">photos</span>, <span class="ruby-ivar">@api_key</span>)
-195:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 191</span>
+191:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photos_request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>={})
+192:     <span class="ruby-identifier">photos</span> = <span class="ruby-identifier">request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>)
+193:     <span class="ruby-constant">PhotoCollection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">photos</span>, <span class="ruby-ivar">@api_key</span>)
+194:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -524,10 +524,10 @@ href="Flickr/Photo.html">Photo</a> objects)
             onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000007-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 124</span>
-124:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photos_search</span>(<span class="ruby-identifier">params</span>={})
-125:     <span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photos.search'</span>, <span class="ruby-identifier">params</span>)
-126:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 123</span>
+123:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photos_search</span>(<span class="ruby-identifier">params</span>={})
+124:     <span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photos.search'</span>, <span class="ruby-identifier">params</span>)
+125:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -547,10 +547,10 @@ href="Flickr/Photo.html">Photo</a> objects)
             onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000012-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 151</span>
-151:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photoset</span>(<span class="ruby-identifier">photoset_id</span>)
-152:     <span class="ruby-constant">Photoset</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">photoset_id</span>, <span class="ruby-ivar">@api_key</span>)
-153:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 150</span>
+150:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">photoset</span>(<span class="ruby-identifier">photoset_id</span>)
+151:     <span class="ruby-constant">Photoset</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">photoset_id</span>, <span class="ruby-ivar">@api_key</span>)
+152:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -574,10 +574,10 @@ from everyone
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 120</span>
-120:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recent</span>
-121:     <span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photos.getRecent'</span>)
-122:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 119</span>
+119:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recent</span>
+120:     <span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photos.getRecent'</span>)
+121:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -600,10 +600,10 @@ Implements flickr.tags.getRelated
             onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000013-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 156</span>
-156:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">related_tags</span>(<span class="ruby-identifier">tag</span>)
-157:     <span class="ruby-identifier">tags_getRelated</span>(<span class="ruby-value str">'tag'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">tag</span>)[<span class="ruby-value str">'tags'</span>][<span class="ruby-value str">'tag'</span>]
-158:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 155</span>
+155:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">related_tags</span>(<span class="ruby-identifier">tag</span>)
+156:     <span class="ruby-identifier">tags_getRelated</span>(<span class="ruby-value str">'tag'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">tag</span>)[<span class="ruby-value str">'tags'</span>][<span class="ruby-value str">'tag'</span>]
+157:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -627,13 +627,13 @@ parameters; returns an XmlSimple object with the response
             onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000018-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 184</span>
-184:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>={})
-185:     <span class="ruby-identifier">url</span> = <span class="ruby-identifier">request_url</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>)
-186:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">XmlSimple</span>.<span class="ruby-identifier">xml_in</span>(<span class="ruby-identifier">http_get</span>(<span class="ruby-identifier">url</span>), { <span class="ruby-value str">'ForceArray'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span> })
-187:     <span class="ruby-identifier">raise</span> <span class="ruby-identifier">response</span>[<span class="ruby-value str">'err'</span>][<span class="ruby-value str">'msg'</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span>[<span class="ruby-value str">'stat'</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">'ok'</span>
-188:     <span class="ruby-identifier">response</span>
-189:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 183</span>
+183:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>={})
+184:     <span class="ruby-identifier">url</span> = <span class="ruby-identifier">request_url</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>)
+185:     <span class="ruby-identifier">response</span> = <span class="ruby-constant">XmlSimple</span>.<span class="ruby-identifier">xml_in</span>(<span class="ruby-identifier">http_get</span>(<span class="ruby-identifier">url</span>), { <span class="ruby-value str">'ForceArray'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span> })
+186:     <span class="ruby-identifier">raise</span> <span class="ruby-identifier">response</span>[<span class="ruby-value str">'err'</span>][<span class="ruby-value str">'msg'</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span>[<span class="ruby-value str">'stat'</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">'ok'</span>
+187:     <span class="ruby-identifier">response</span>
+188:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -660,15 +660,15 @@ params (where applicable) which should be supplied as a Hash (e.g
             onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000020-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 200</span>
-200:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_url</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>={})
-201:     <span class="ruby-identifier">method</span> = <span class="ruby-value str">'flickr.'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">method</span>
-202:     <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;#{@host}#{@api}/?api_key=#{@api_key}&amp;method=#{method}&quot;</span>
-203:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value str">'api_key'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@api_key</span>, <span class="ruby-value str">'method'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">method</span>, <span class="ruby-value str">'auth_token'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@auth_token</span>)
-204:     <span class="ruby-identifier">signature</span> = <span class="ruby-identifier">signature_from</span>(<span class="ruby-identifier">params</span>) 
-205:     
-206:     <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;#{@host}#{@api}/?&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value str">'api_sig'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">signature</span>).<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}=&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">CGI</span><span class="ruby-operator">::</span><span class="ruby-identifier">escape</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;&amp;&quot;</span>)
-207:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 199</span>
+199:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_url</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>={})
+200:     <span class="ruby-identifier">method</span> = <span class="ruby-value str">'flickr.'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">method</span>
+201:     <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;#{@host}#{@api}/?api_key=#{@api_key}&amp;method=#{method}&quot;</span>
+202:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-value str">'api_key'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@api_key</span>, <span class="ruby-value str">'method'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">method</span>, <span class="ruby-value str">'auth_token'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@auth_token</span>)
+203:     <span class="ruby-identifier">signature</span> = <span class="ruby-identifier">signature_from</span>(<span class="ruby-identifier">params</span>) 
+204:     
+205:     <span class="ruby-identifier">url</span> = <span class="ruby-node">&quot;#{@host}#{@api}/?&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-value str">'api_sig'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">signature</span>).<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}=&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">CGI</span><span class="ruby-operator">::</span><span class="ruby-identifier">escape</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span> }.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;&amp;&quot;</span>)
+206:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -707,8 +707,7 @@ Alias for <a href="Flickr.html#M000007">photos_search</a>
 88:     <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key_or_params</span>[<span class="ruby-identifier">:api_key</span>]
 89:     <span class="ruby-ivar">@shared_secret</span> = <span class="ruby-identifier">api_key_or_params</span>[<span class="ruby-identifier">:shared_secret</span>]
 90:     <span class="ruby-ivar">@auth_token</span> = <span class="ruby-identifier">api_key_or_params</span>[<span class="ruby-identifier">:auth_token</span>]
-91:     <span class="ruby-ivar">@shared_secret</span> = <span class="ruby-identifier">api_key_or_params</span>[<span class="ruby-identifier">:shared_secret</span>]
-92:   <span class="ruby-keyword kw">end</span>
+91:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -728,12 +727,12 @@ Alias for <a href="Flickr.html#M000007">photos_search</a>
             onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000021-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 209</span>
-209:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">signature_from</span>(<span class="ruby-identifier">params</span>={})
-210:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@shared_secret</span> <span class="ruby-comment cmt"># don't both getting signature if no shared_secret</span>
-211:     <span class="ruby-identifier">request_str</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span>}.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{p[0].to_s}#{p[1]}&quot;</span>}.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">join</span> <span class="ruby-comment cmt"># build key value pairs, sort in alpha order then join them, ignoring those with nil value</span>
-212:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">MD5</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-node">&quot;#{@shared_secret}#{request_str}&quot;</span>)
-213:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 208</span>
+208:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">signature_from</span>(<span class="ruby-identifier">params</span>={})
+209:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@shared_secret</span> <span class="ruby-comment cmt"># don't both getting signature if no shared_secret</span>
+210:     <span class="ruby-identifier">request_str</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span>}.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{p[0].to_s}#{p[1]}&quot;</span>}.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">join</span> <span class="ruby-comment cmt"># build key value pairs, sort in alpha order then join them, ignoring those with nil value</span>
+211:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">MD5</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-node">&quot;#{@shared_secret}#{request_str}&quot;</span>)
+212:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -757,10 +756,10 @@ href="Flickr.html#M000009">tag</a>
             onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000009-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 130</span>
-130:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tag</span>(<span class="ruby-identifier">tag</span>)
-131:     <span class="ruby-identifier">photos</span>(<span class="ruby-value str">'tags'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">tag</span>)
-132:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 129</span>
+129:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">tag</span>(<span class="ruby-identifier">tag</span>)
+130:     <span class="ruby-identifier">photos</span>(<span class="ruby-value str">'tags'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">tag</span>)
+131:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -783,11 +782,11 @@ Implements flickr.people.findByEmail and flickr.people.findByUsername.
             onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000010-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 135</span>
-135:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">users</span>(<span class="ruby-identifier">lookup</span>=<span class="ruby-keyword kw">nil</span>)
-136:     <span class="ruby-identifier">user</span> = <span class="ruby-identifier">people_findByEmail</span>(<span class="ruby-value str">'find_email'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lookup</span>)[<span class="ruby-value str">'user'</span>] <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">people_findByUsername</span>(<span class="ruby-value str">'username'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lookup</span>)[<span class="ruby-value str">'user'</span>]
-137:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>[<span class="ruby-value str">&quot;nsid&quot;</span>], <span class="ruby-value str">&quot;username&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>[<span class="ruby-value str">&quot;username&quot;</span>], <span class="ruby-value str">&quot;client&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>)
-138:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 134</span>
+134:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">users</span>(<span class="ruby-identifier">lookup</span>=<span class="ruby-keyword kw">nil</span>)
+135:     <span class="ruby-identifier">user</span> = <span class="ruby-identifier">people_findByEmail</span>(<span class="ruby-value str">'find_email'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lookup</span>)[<span class="ruby-value str">'user'</span>] <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">people_findByUsername</span>(<span class="ruby-value str">'username'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-identifier">lookup</span>)[<span class="ruby-value str">'user'</span>]
+136:     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>[<span class="ruby-value str">&quot;nsid&quot;</span>], <span class="ruby-value str">&quot;username&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user</span>[<span class="ruby-value str">&quot;username&quot;</span>], <span class="ruby-value str">&quot;client&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">self</span>)
+137:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

@@ -181,12 +181,12 @@ href="Photoset.html#M000050">getPhotos</a>
             onclick="toggleCode('M000048-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000048-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 710</span>
-710:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">api_key</span>={})
-711:       <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
-712:       <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key</span>
-713:       <span class="ruby-ivar">@client</span> = <span class="ruby-constant">Flickr</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@api_key</span>
-714:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 709</span>
+709:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">id</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">api_key</span>={})
+710:       <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
+711:       <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key</span>
+712:       <span class="ruby-ivar">@client</span> = <span class="ruby-constant">Flickr</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@api_key</span>
+713:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -212,17 +212,17 @@ private, once we can call it as needed
             onclick="toggleCode('M000049-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000049-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 718</span>
-718:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getInfo</span>
-719:       <span class="ruby-identifier">info</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photosets_getInfo</span>(<span class="ruby-value str">'photoset_id'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-ivar">@id</span>)[<span class="ruby-value str">'photoset'</span>]
-720:       <span class="ruby-ivar">@owner</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info</span>[<span class="ruby-value str">'owner'</span>], <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-ivar">@api_key</span>)
-721:       <span class="ruby-ivar">@primary</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'primary'</span>]
-722:       <span class="ruby-ivar">@photos</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'photos'</span>]
-723:       <span class="ruby-ivar">@title</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'title'</span>]
-724:       <span class="ruby-ivar">@description</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'description'</span>]
-725:       <span class="ruby-ivar">@url</span> = <span class="ruby-node">&quot;http://www.flickr.com/photos/#{@owner.getInfo.username}/sets/#{@id}/&quot;</span>
-726:       <span class="ruby-keyword kw">self</span>
-727:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 717</span>
+717:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getInfo</span>
+718:       <span class="ruby-identifier">info</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photosets_getInfo</span>(<span class="ruby-value str">'photoset_id'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-ivar">@id</span>)[<span class="ruby-value str">'photoset'</span>]
+719:       <span class="ruby-ivar">@owner</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">info</span>[<span class="ruby-value str">'owner'</span>], <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-ivar">@api_key</span>)
+720:       <span class="ruby-ivar">@primary</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'primary'</span>]
+721:       <span class="ruby-ivar">@photos</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'photos'</span>]
+722:       <span class="ruby-ivar">@title</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'title'</span>]
+723:       <span class="ruby-ivar">@description</span> = <span class="ruby-identifier">info</span>[<span class="ruby-value str">'description'</span>]
+724:       <span class="ruby-ivar">@url</span> = <span class="ruby-node">&quot;http://www.flickr.com/photos/#{@owner.getInfo.username}/sets/#{@id}/&quot;</span>
+725:       <span class="ruby-keyword kw">self</span>
+726:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -242,10 +242,10 @@ private, once we can call it as needed
             onclick="toggleCode('M000050-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000050-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/flickr.rb, line 729</span>
-729:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getPhotos</span>
-730:       <span class="ruby-identifier">photosetPhotos</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photosets.getPhotos'</span>, {<span class="ruby-value str">'photoset_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@id</span>})
-731:     <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/flickr.rb, line 728</span>
+728:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getPhotos</span>
+729:       <span class="ruby-identifier">photosetPhotos</span> = <span class="ruby-ivar">@client</span>.<span class="ruby-identifier">photos_request</span>(<span class="ruby-value str">'photosets.getPhotos'</span>, {<span class="ruby-value str">'photoset_id'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@id</span>})
+730:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
