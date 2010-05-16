@@ -1,3 +1,14 @@
+1.1.0 2010-05-16
+* Major improvement - now gem is very easy to use as a rails plugin with external configuration for api connection. - /config/flickr.api.yml
+
+== 1.0.9 2010-05-16
+* Few enhancements:
+  * New flickr api domain support: http://api.flickr.com
+  * depricated email/password params removed form Flickr#initialize and only hash method supported
+  * New rdoc documentation.
+  * tests fixed
+  * init.rb - file ready for using library as a rails 3.x plugin.
+
 == 1.0.8 2009-01-25
 * 2 minor enhancements
  * Refactored initialization of PhotoCollection so can be instantiated from response returned by photosets.getPhotos
