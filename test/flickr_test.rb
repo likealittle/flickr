@@ -215,7 +215,7 @@ class TestFlickr < Test::Unit::TestCase
   # photos method tests
   def test_should_get_recent_photos_if_no_params_for_photos
     f = flickr_client
-    f.expects(:photos_search)
+    f.expects(:recent)
     f.photos
   end
   
