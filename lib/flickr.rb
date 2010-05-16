@@ -250,7 +250,7 @@ class Flickr
               
     # Excludes specific configuration for choosed environment in Rails
     def self.parse_in_rails_env!
-      @@configuration = @@configuration[RAILS_ENV].symbolize_keys if defined? RAILS_ENV
+      @@configuration = @@configuration[RAILS_ENV].symbolize_keys if defined? RAILS_ENV and @@configuration.has_key? RAILS_ENV
     end 
                                                                       
     # Returns configuration Hash
