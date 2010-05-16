@@ -25,7 +25,7 @@ end
 
 spec = Gem::Specification.new do |s|
   s.add_dependency('xml-simple', '>= 1.0.7')
-  s.name = 'flickr'
+  s.name = 'flickr.rb'
   s.version = "1.1.0"
   s.platform = Gem::Platform::RUBY
   s.summary = "An insanely easy interface to the Flickr photo-sharing service. Also available as a Rails plugin! By Scott Raymond. Maintainer: Patrick Plattes, Rafal Piekarski"

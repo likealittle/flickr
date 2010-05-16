@@ -46,7 +46,9 @@ This has now been largely corrected, though not all current API calls are suppor
 
 == INSTALL:
 
-  sudo gem install flickr
+  sudo gem install flickr.rb
+  
+* Gem homepage: http://rubygems.org/gems/flickr.rb
 
 == CONFIGURING:
 
