@@ -88,7 +88,6 @@ class Flickr
     @api_key = api_key_or_params[:api_key]
     @shared_secret = api_key_or_params[:shared_secret]
     @auth_token = api_key_or_params[:auth_token]
-    @shared_secret = api_key_or_params[:shared_secret]
   end
 
   # Gets authentication token given a Flickr frob, which is returned when user
@@ -251,7 +250,7 @@ class Flickr
               
     # Excludes specific configuration for choosed environment in Rails
     def self.parse_in_rails_env!
-      @@configuration = @@configuration[RAILS_ENV] if defined? RAILS_ENV
+      @@configuration = @@configuration[RAILS_ENV].symbolize_keys if defined? RAILS_ENV
     end 
                                                                       
     # Returns configuration Hash
