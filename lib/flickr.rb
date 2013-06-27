@@ -198,11 +198,13 @@ class Flickr
   # applicable) which should be supplied as a Hash (e.g 'user_id' => "foo123")
   def request_url(method, params={})
     method = 'flickr.' + method
-    url = "#{@host}#{@api}/?api_key=#{@api_key}&method=#{method}"
-    params.merge!('api_key' => @api_key, 'method' => method, 'auth_token' => @auth_token)
-    signature = signature_from(params) 
-    
-    url = "#{@host}#{@api}/?" + params.merge('api_sig' => signature).collect { |k,v| "#{k}=" + CGI::escape(v.to_s) unless v.nil? }.compact.join("&")
+    if @auth_token
+      p = params.merge('api_key' => @api_key, 'method' => method, 'auth_token' => @auth_token)
+      signature = signature_from(params)
+      params = params.merge('api_sig' => signature, 'auth_token' => @auth_token)
+    end
+    url = "#{@host}#{@api}/?method=#{method}&api_key=#{@api_key}&" +
+      params.collect { |k,v| "#{k}=" + CGI::escape(v.to_s)}.compact.join("&")
   end
   
   def signature_from(params={})
@@ -223,7 +225,7 @@ class Flickr
     # depending on the original object the photos are related to (e.g 'photos',
     # 'photoset', etc)
     def initialize(photos_api_response={}, api_key={})
-      photos = photos_api_response.values.first 
+      photos = photos_api_response["photos"]
       [ "page", "pages", "perpage", "total" ].each { |i| instance_variable_set("@#{i}", photos[i])} 
       collection = photos['photo'] || []
       collection = [collection] if collection.is_a? Hash
