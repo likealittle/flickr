@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.autorequire = %q{flickr.rb}
   s.date = %q{2010-05-15}
   s.email = %q{ravbaker@gmail.com}
-  s.files = ["History.txt", "LICENSE", "README.txt", "TODO", "lib/flickr.rb", "test/flickr_test.rb", "init.rb"]
+  s.files = ["LICENSE", "README.txt", "TODO", "lib/flickr.rb", "test/flickr_test.rb", "init.rb"]
   s.homepage = %q{http://github.com/RaVbaker/flickr/}
   s.require_paths = ["lib"]
   s.requirements = ["Flickr developers API key"]

@@ -1,4 +1,3 @@
-History.txt
 index.html
 init.rb
 lib/flickr.rb
